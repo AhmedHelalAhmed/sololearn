@@ -1,0 +1,394 @@
+<?php
+// Start the session
+session_start();
+?>
+
+<?php
+$value = "John";
+setcookie("user", $value, time() + (86400 * 30), '/');
+
+if(isset($_COOKIE['user'])) {
+  echo "Value is: ". $_COOKIE['user'];
+}
+//Outputs "Value is: John"
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script language="php">
+    echo "Hello World!";
+
+
+    </script>
+
+
+</head>
+<body>
+<?
+  echo "Hello World!";
+?>
+
+
+<?php
+   echo "<strong>This is a bold text.</strong>";
+?>
+
+
+<?php
+  echo "<p>Hello World!</p>";
+// This is a single-line comment
+echo "<p>I am learning PHP!</p>";
+echo "<p>This is my first program!</p>";
+?>
+
+
+<?php
+  echo "<p>Hello World!</p>";
+/*
+This is a multi-line comment block
+that spans over
+multiple lines
+*/
+echo "<p>I am learning PHP!</p>";
+echo "<p>This is my first program!</p>";
+?>
+
+
+<?php
+   $name = 'John';
+   $age = 25;
+   echo $name;
+
+  // Outputs 'John'
+?>
+
+
+<?php
+  define("MSG", " Hi SoloLearners!", true);
+  echo msg;
+
+  // Outputs "Hi SoloLearners!"
+?>
+
+
+<?php
+  define("MSG", "Hi SoloLearners!");
+  echo MSG;
+
+   // Outputs "Hi SoloLearners!"
+?>
+
+
+<?php
+  $string1 = "Hello world!"; //double quotes
+  $string2 = 'Hello world!';  //single quotes
+?>
+
+
+<?php
+  $int1 = 42; // positive number
+  $int2 = -42; // negative number
+?>
+
+
+<?php
+  $x = 42.168;
+?>
+
+
+<?php
+  $x = true; $y = false;
+?>
+
+
+<?php
+  $str = "10";
+  $int = 20;
+  $sum = $str + $int;
+  // see carefullt echo(); function !!!!!!!!!!!!!!!
+  echo ($sum);
+
+  // Outputs 30
+?>
+
+
+<?php
+  $name = 'David';
+  function getName() {
+    echo $name;
+  }
+  getName();
+
+  // Error: Undefined variable: name
+?>
+
+
+<?php
+  $name = 'David';
+  function getName() {
+    global $name;
+    echo $name;
+  }
+  getName();
+
+  //Outputs 'David'
+?>
+
+
+<?php
+  $a = 'hello';
+  $hello = "Hi!";
+  echo $$a;
+
+  // Outputs 'Hi!'
+?>
+
+
+<?php
+  $num1 = 8;
+  $num2 = 6;
+
+  //Addition
+  echo $num1 + $num2; //14
+
+  //Subtraction
+  echo $num1 - $num2; //2
+
+  //Multiplication
+  echo $num1 * $num2; //48
+
+  //Division
+   echo $num1 / $num2; //1.33333333333
+?>
+
+
+<?php
+ $x = 50;
+ $x += 100;
+ echo $x;
+
+ // Outputs: 150
+?>
+
+
+<?php
+$myArray[0] = "John";
+$myArray[1] = "<strong>PHP</strong>";
+$myArray[2] = 21;
+
+echo "$myArray[0] is $myArray[2] and knows $myArray[1]";
+
+// Outputs "John is 21 and knows PHP"
+?>
+
+
+<?php
+$x = 10;
+$y = 20;
+if ($x >= $y) {
+echo $x;
+} else {
+echo $y;
+}
+
+// Outputs "20"
+?>
+
+
+<?php
+$age = 21;
+
+if ($age<=13) {
+   echo "Child.";
+} elseif ($age>13 && $age<19) {
+echo "Teenager";
+} else {
+echo "Adult";
+}
+
+//Outputs "Adult"
+?>
+
+<?php include 'header.php'; ?>
+<p>Some text.</p>
+<p>Some text.</p>
+
+
+<?php
+echo $_SERVER['SCRIPT_NAME'];
+//Outputs "/somefile.php"
+
+
+echo $_SERVER;
+echo $GLOBALS;
+echo $_REQUEST;
+echo $_POST;
+echo $_GET;
+echo $_FILES;
+echo $_ENV;
+echo $_COOKIE;
+echo $_SESSION;
+
+?>
+
+
+<?php
+echo $_SERVER['HTTP_HOST'];
+//Outputs "localhost"
+?>
+
+
+<?php
+$host = $_SERVER['HTTP_HOST'];
+$image_path = $host.'/images/';
+?>
+
+
+<?php
+require 'config.php';
+echo '<img src="'.$image_path.'header.png" />';
+?>
+
+
+<!--
+ action in php form is file
+  not as oop
+  action is the methods of functions
+  also
+  method in php in form not means functions it means ... post or get the type of request
+
+  -->
+
+<form action="header.php" method="post">
+    <p>Name: <input type="text" name="name"/></p>
+    <p>Age: <input type="text" name="age"/></p>
+    <p><input type="submit" name="submit" value="Submit"/></p>
+</form>
+
+
+Welcome <?php echo $_POST["name"]; ?><br/>
+Your age: <?php echo $_POST["age"]; ?>
+
+
+<form action="actionGet.php" method="get">
+    Name: <input type="text" name="name"/><br/><br/>
+    Age: <input type="text" name="age"/><br/><br/>
+    <input type="submit" name="submit" value="Submit"/>
+</form>
+
+
+<?php
+echo "Your name is " . $_SESSION['name'];
+// Outputs "Your name is John"
+?>
+
+
+<?php
+$myfile = fopen("names.txt", "w");
+
+$txt = "John\n";
+fwrite($myfile, $txt);
+$txt = "David\n";
+fwrite($myfile, $txt);
+
+fclose($myfile);
+
+/* File contains:
+John
+David
+*/
+?>
+
+
+<?php
+if(isset($_POST['text'])) {
+  $name = $_POST['text'];
+  $handle = fopen('names.txt', 'a');
+  fwrite($handle, $name."\n");
+  fclose($handle);
+}
+?>
+<form method="post">
+    <!--
+    We did not specify an action attribute for the form, so it will submit to itself.
+    -->
+    Name: <input type="text" name="text"/>
+    <input type="submit" name="submit"/>
+</form>
+
+
+<?php
+interface AnimalInterface {
+  public function makeSound();
+}
+
+class Dog implements AnimalInterface {
+  public function makeSound() {
+    echo "Woof! <br />";
+}
+}
+class Cat implements AnimalInterface {
+public function makeSound() {
+echo "Meow! <br/>";
+}
+}
+
+$myObj1 = new Dog();
+$myObj1->makeSound();
+
+$myObj2 = new Cat();
+$myObj2->makeSound();
+?>
+
+
+<?php
+abstract class Fruit {
+  private $color;
+
+  abstract public function eat();
+
+  public function setColor($c) {
+    $this->color = $c;
+}
+}
+
+class Apple extends Fruit {
+public function eat() {
+echo "Omnomnom";
+}
+}
+
+$obj = new Apple();
+$obj->eat();
+?>
+
+
+<?php
+class myClass {
+  static $myStaticProperty = 42;
+}
+
+echo myClass::$myStaticProperty;
+?>
+
+
+<?php
+class myClass {
+  final function myFunction() {
+    echo "Parent";
+  }
+}
+// ERROR because a final method cannot be overridden in child classes.
+class myClass2 extends myClass {
+  function myFunction() {
+    echo "Child";
+  }
+}
+?>
+
+
+</body>
+</html>
